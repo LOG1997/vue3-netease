@@ -1,11 +1,11 @@
 /*
  * @Author: LOG
  * @FilePath: \vue3-netease\src\apis\axios.ts
- * @Descripttion: 
- * @version: 
+ * @Descripttion:
+ * @version:
  * @Date: 2022-05-02 21:45:33
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-04 13:12:51
+ * @LastEditTime: 2022-05-04 14:08:30
  */
 import axios from "axios";
 import qs from "qs";
@@ -37,8 +37,14 @@ axios.interceptors.response.use(
   (response) => {
     // console.log("axios响应：",response)
     if (response.status == 200) {
-      if(response.data.token){
-        localStorage.setItem("token",response.data.token);
+      // 返回值正确的情况下，如果有token值将其存储到localStorage中
+      if (response.data.token) {
+        localStorage.setItem("token", response.data.token);
+      }
+      
+      // 返回值正确的情况下，如果有cookies值将其存储到cookie中
+      if (response.data.cookie) {
+        document.cookie = response.data.cookie;
       }
       return Promise.resolve(response.data);
     } else {

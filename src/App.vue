@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-02 21:45:33
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-03 13:53:03
+ * @LastEditTime: 2022-05-04 17:54:23
 -->
 <script setup lang="ts">
 
@@ -22,6 +22,8 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  min-width: 100vw;
+  min-height: 100vh;
   /* margin-top: 60px; */
 }
 </style>

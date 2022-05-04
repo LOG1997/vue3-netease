@@ -5,36 +5,61 @@
  * @version: 
  * @Date: 2022-05-03 17:13:37
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-03 18:03:05
+ * @LastEditTime: 2022-05-04 22:28:57
 -->
 <template>
-  <swiper :slides-per-view="1" :autoplay="{ delay: 2500, disableOnInteraction: false }" :loop="true" :space-between="50"
-    :modules="modules">
-    <swiper-slide class="bg-blue-100">Slide 1</swiper-slide>
-    <swiper-slide class="bg-yellow-100">Slide 2</swiper-slide>
-    <swiper-slide class="bg-green-100">Slide 3</swiper-slide>
-    <swiper-slide class="bg-gray-100">Slide 4</swiper-slide>
-    <swiper-slide class="bg-dark-100">Slide 5</swiper-slide>
-    <swiper-slide class="bg-blue-100">Slide 6</swiper-slide>
-  </swiper>
+  <div class="swiper-container w-100%">
+
+    <swiper :autoplay="{ delay: 2500, disableOnInteraction: false }" :loop="true" :space-between="0" :modules="modules"
+      :pagination="{ clickable: true }" :navigation="true" @swiper="onSwiper" @slideChange="onSlideChange"
+      :loopFillGroupWithBlank="true" :slidesPerGroup="1" :effect="'coverflow'" :grabCursor="true" :centeredSlides="true"
+      :slidesPerView="3" :coverflowEffect="{
+        rotate: 60,
+        stretch: 1,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      }" :lazy="true">
+
+      <swiper-slide class="bg-blue-100" v-for="item in ban" :key="item.encodeId">
+        <div class="swiper-img">
+
+          <img :src="item.imageUrl" alt="">
+          <div class="swiper-img-info">
+            <span>{{ item.typeTitle }}</span>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper>
+
+  </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Autoplay } from 'swiper'
-
+import { Autoplay, Navigation, Pagination, A11y, EffectCoverflow, Lazy } from 'swiper'
+import { computed } from 'vue'
 // Import Swiper styles
 import 'swiper/css'
-export default {
-  components: {
-    Swiper,
-    SwiperSlide
-  },
-  setup() {
-    return {
-      modules: [Autoplay]
-    }
-  }
-}
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import "swiper/css/effect-coverflow";
+import "swiper/css/lazy";
+const modules = [Autoplay, Navigation, Pagination, A11y, EffectCoverflow, Lazy]
+
+const props = defineProps({
+  banners: Object
+});
+const ban = computed(() => {
+  return props.banners.banners
+});
+const onSwiper = (swiper: any) => {
+  console.log(swiper);
+};
+const onSlideChange = () => {
+  console.log('slide change');
+};
+console.log("bannseee:", ban)
 </script>
+

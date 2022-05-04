@@ -11,7 +11,7 @@
 import { ref,reactive } from 'vue';
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
- const emits = defineEmits(['submitLogin'])
+ const emits = defineEmits(['submitLogin','cancelLogin'])
  function submitLogin(data:any){
         console.log("子组件",data)
         let phone=data.phone;
@@ -20,6 +20,9 @@ import "bootstrap"
             phone,password
         }
         )
+ }
+ function cancelLogin(){
+    emits("cancelLogin")
  }
  let formData=ref({
         phone:'',
@@ -45,7 +48,7 @@ import "bootstrap"
 </div>
 <div class="bt-button mt-3">
 <button type="button" class="btn btn-primary mr-10" @click="submitLogin(formData)">登录</button>
-<button type="button" class="btn btn-secondary">取消</button>
+<button type="button" class="btn btn-secondary" @click="cancelLogin">取消</button>
 </div>
 </div>
 <div class="boli absolute w-90 h-80 bg-light-400 opacity-10 mt-20 ml-250 z-10"></div>

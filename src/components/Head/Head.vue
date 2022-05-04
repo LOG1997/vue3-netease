@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-03 13:48:37
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-04 13:12:19
+ * @LastEditTime: 2022-05-04 19:31:59
 -->
 <script setup lang='ts'>
 import { ref, reactive } from 'vue';
@@ -13,35 +13,55 @@ import { ref, reactive } from 'vue';
 import wyyLogoVue from '@/assets/iconfont/wyy-logo.vue';
 import UserLogin from '@/components/UserLogin/LoginRegister.vue';
 import { loginCellphone } from '../../apis/request';
-import { result } from 'lodash';
+
+import { useRouter, useRoute } from 'vue-router'
+
+const router = useRouter()
+// 显隐登录框
 let isLoginView = ref(false);
 const changeLoginView = () => {
     isLoginView.value = !isLoginView.value;
 }
+// 登录
 const submitLogin = (userInfo: object) => {
     console.log("父组件", userInfo);
     loginCellphone(userInfo).then(res => {
-        console.log(res)
+        console.log((res as object));
+        let userInfo = {
+            userId: res.profile.userId,
+            avatarUrl: res.profile.avatarUrl,
+            nickname: res.profile.nickname,
+            eventCount: res.profile.eventCount,
+            followeds: res.profile.followeds,
+            follows: res.profile.follows,
+        }
+        localStorage.setItem("userInfo", JSON.stringify(userInfo));
+        isLoginView.value = false;
+        toHome();
     })
 
 };
-// let userInfo={
-//     phone: '15196725410',
-//     password: '241624'
-// }
+let userInfo = ref(JSON.parse(localStorage.getItem("userInfo"))) || null;
 
-// console.log("登陆结果",result);
+// 回到首页
+function toHome() {
 
-
-
+    router.push({
+        name: 'Home'
+    })
+}
+// 取消登录
+function cancelLogin() {
+    isLoginView.value = false;
+}
 </script>
  
 <template>
 
     <div class="w-auto h-20 bg-red-500 flex">
         <!-- logo -->
-        <div
-            class="head-logo text-2xl gap-3 w-80 h-20 ml-16 justify-center flex items-center font-sans font-bold text-gray-100">
+        <div @click="toHome"
+            class="head-logo text-2xl gap-3 w-80 h-20 cursor-pointer ml-16 justify-center flex items-center font-sans font-bold text-gray-100">
             <wyyLogoVue class="w-12 h-12"></wyyLogoVue>
             <span>网易云音乐</span>
         </div>
@@ -80,12 +100,13 @@ const submitLogin = (userInfo: object) => {
             @click="changeLoginView">
             <!-- 默认头像 -->
             <div class="userinfo-avatar w-10 h-10 rounded-full">
-                <icon-font class="#icon-touxiang" fontSize="2.4rem" color="#e7e7e7"></icon-font>
+                <icon-font class="#icon-touxiang" fontSize="2.4rem" color="#e7e7e7" v-if="!userInfo"></icon-font>
+                <img v-if="userInfo" :src="userInfo.avatarUrl" alt="" class="rounded-3xl">
             </div>
-            <span>未登录</span>
-            <span v-if="false">真雨村</span>
+            <span v-if="!userInfo">未登录</span>
+            <span v-if="userInfo">{{ userInfo.nickname }}</span>
         </div>
-        <UserLogin class="z-10" v-if="isLoginView" @submitLogin="submitLogin"></UserLogin>
+        <UserLogin class="z-10" v-if="isLoginView" @submitLogin="submitLogin" @cancelLogin="cancelLogin"></UserLogin>
         <!-- 皮肤、设置 -->
         <div class="pifu-setting flex justify-center items-center gap-5 ml-20">
             <div class="pifu-icon">

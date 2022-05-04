@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-02 21:45:33
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-04 13:04:54
+ * @LastEditTime: 2022-05-04 23:30:03
 -->
 <script  setup lang='ts'>
 import { ref, reactive } from 'vue'
@@ -29,18 +29,18 @@ import MainHead from "../components/MainHead/MainHead.vue";
         </Head>
     </header>
 
-    <main class="flex">
-        <nav class="left-nav w-60 bg-red-200">
+    <main class="flex findmusic relative">
+        <nav class="left-nav w-40 min-w-40 bg-red-200 relative">
             <LeftNav class="ml-5"></LeftNav>
         </nav>
-        <main class="w-auto p-10">
+        <main class="w-auto p-10 relative">
 
-            <MainHead></MainHead>
-            <Main class="home-swiper h-100"></Main>
+            <MainHead class="relative"></MainHead>
+            <Main class="home-swiper h-100 w-full absolute"></Main>
         </main>
     </main>
-    <footer class="h-20 bg-blue-200">
-        <Footer></Footer>
+    <footer class="h-20 bg-dark-200 z-30 mt-22">
+        <!-- <Footer></Footer> -->
     </footer>
 </template>
  
@@ -48,10 +48,18 @@ import MainHead from "../components/MainHead/MainHead.vue";
 .left-nav {
     /* width: 60px; */
     height: calc(100vh - 10rem);
+    min-height: calc(100vh - 10rem);;
     /* background: red; */
 }
 
 .home-swiper {
-    width: calc(100vw - 14.5rem)
+    width: calc(100vw - 12rem);
+    min-width: calc(1600px - 12rem);
+    overflow-y: scroll;
+    overflow-x: auto;
+}
+.findmusic{
+    height: calc(100vh - 15.5rem);
+
 }
 </style>

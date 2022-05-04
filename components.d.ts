@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     LeftNav: typeof import('./src/components/LeftNav/LeftNav.vue')['default']
     LoginRegister: typeof import('./src/components/UserLogin/LoginRegister.vue')['default']
     MainHead: typeof import('./src/components/MainHead/MainHead.vue')['default']
+    NewMusic: typeof import('./src/components/NewMusic/NewMusic.vue')['default']
     RecommendPlaylist: typeof import('./src/components/RecommendPlaylist/RecommendPlaylist.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
