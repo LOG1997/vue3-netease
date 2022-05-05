@@ -63,8 +63,8 @@
     "headnav":[
         {
             "name":"个性推荐",
-            "href":"personalized",
-            "id":"personalized"
+            "href":"",
+            "id":""
         },
         {
             "name":"专属定制",

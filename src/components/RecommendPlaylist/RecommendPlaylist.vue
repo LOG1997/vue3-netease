@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-03 20:26:01
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-04 23:16:14
+ * @LastEditTime: 2022-05-05 23:00:21
 -->
 <script setup lang='ts'>
 import { ref, reactive, computed } from 'vue';
@@ -25,6 +25,7 @@ console.log("个人歌单：", personalized)
             <li>
                 <div class="daily-playlist w-40 h-40 m-auto ">
                     <div class="daily-playlist h-40 w-40 bg-dark-50 rounded-xl">
+                        <span class="text-light-50 text-9xl leading-40">{{new Date().getDate()}}</span>
                     </div>
                            <div class="personalized-item-info">
                     <p>每日歌曲推荐</p>
