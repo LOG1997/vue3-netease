@@ -5,7 +5,7 @@
  * @version:
  * @Date: 2022-05-02 21:45:33
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-04 22:40:39
+ * @LastEditTime: 2022-05-05 14:26:56
  */
 import axios from "./axios";
 let { get, post } = axios;
@@ -20,3 +20,5 @@ export const loginCellphone = (data: object) => get(`/api/login/cellphone`, data
 export const getBanner = (data: object) => get(`/api/banner`, data);
 // 获取推荐歌单
 export const getPersonalized = (data: object) => get(`/api/recommend/resource`, data);
+// 获取最新音乐
+export const getNewSong = (data: object) => get(`/api/personalized/newsong`, data);
