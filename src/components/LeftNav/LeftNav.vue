@@ -5,13 +5,13 @@
  * @version: 
  * @Date: 2022-05-03 16:37:15
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-03 18:19:20
+ * @LastEditTime: 2022-05-06 12:16:27
 -->
 <script setup lang='ts'>
 import { ref, reactive } from 'vue';
 
-import navdata from "../../navdata/nav.json"
-console.log(navdata);
+import staticdata from "../../staticdata/nav.json"
+console.log(staticdata);
 </script>
  
 <template>
@@ -19,7 +19,7 @@ console.log(navdata);
         <div class="nav-home">
             <ul>
                 <li class=" h-10  text-left leading-10 hover:bg-dark-50/20 cursor-pointer"
-                    v-for="item in navdata.nav" :key="item.id">
+                    v-for="item in staticdata.nav" :key="item.id">
                     <span class="ml-5">{{ item.name }}</span>
                 </li>
             </ul>
@@ -30,7 +30,7 @@ console.log(navdata);
             </div>
             <ul>
                 <li class=" h-10 text-left  leading-10 hover:bg-dark-50/20 cursor-pointer"
-                    v-for="item in navdata.mymusic" :key="item.id">
+                    v-for="item in staticdata.mymusic" :key="item.id">
 
                     <span class="ml-5">{{ item.name }}</span>
                 </li>

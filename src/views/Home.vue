@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-02 21:45:33
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-06 00:35:04
+ * @LastEditTime: 2022-05-06 14:03:01
 -->
 <script  setup lang='ts'>
 import { ref, reactive } from 'vue'
@@ -29,15 +29,18 @@ import MainHead from "../components/MainHead/MainHead.vue";
         </Head>
     </header>
 
-    <main class="flex findmusic relative select-none">
+    <main class="flex findmusic relative">
         <nav class="left-nav w-40 min-w-40 bg-red-200 relative">
             <LeftNav class="ml-5"></LeftNav>
         </nav>
         <main class="w-auto p-10 relative">
 
             <MainHead class="relative"></MainHead>
+            <div class="main-view  h-100 w-full absolute">
+                
             <router-view></router-view>
-            <!-- <Main class="home-swiper h-100 w-full absolute"></Main> -->
+            </div>
+            <!-- <Main ></Main> -->
         </main>
     </main>
     <footer class="h-20 bg-dark-200 z-30 mt-22">
@@ -53,7 +56,7 @@ import MainHead from "../components/MainHead/MainHead.vue";
     /* background: red; */
 }
 
-.home-swiper {
+.main-view {
     width: calc(100vw - 12rem);
     min-width: calc(1600px - 12rem);
     overflow-y: scroll;

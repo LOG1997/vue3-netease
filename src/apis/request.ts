@@ -5,7 +5,7 @@
  * @version:
  * @Date: 2022-05-02 21:45:33
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-05 23:36:16
+ * @LastEditTime: 2022-05-06 17:01:46
  */
 import axios from "./axios";
 let { get, post } = axios;
@@ -24,3 +24,13 @@ export const getPersonalized = (data: object) => get(`/api/recommend/resource`, 
 export const getNewSong = (data: object) => get(`/api/personalized/newsong`, data);
 // 获取精品歌单
 export const getTopPlayList = (data: object) => get(`/api/top/playlist/highquality`, data);
+// 获取热门歌单分类
+export const getPlayListHot = (data: object) => get(`/api/playlist/hot`, data);
+// 获取全部歌单分类tag
+export const getPlayListCat = (data: object) => get(`/api/playlist/catlist`, data);
+// 获取指定歌单类型的歌单  空参数则为全部
+export const getPlayList = (data: object) => get(`/api/top/playlist`, data);
+
+
+
+

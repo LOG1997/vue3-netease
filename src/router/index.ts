@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-02 21:45:33
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-06 00:35:22
+ * @LastEditTime: 2022-05-06 11:45:52
  */
 import { createRouter, createWebHistory } from "vue-router";
 
@@ -35,21 +35,21 @@ const routes = [
   },
   {
     path: "/",
-    // redirect: "/home",
-    name: "Home",
-    component: Home,
-    children: [
-      {
-        path: "",
-        name: "Main",
-        component: () => import("../views/Main/Main.vue"),
-      },
-      {
-        path: "playlist",
-        name: "Playlist",
-        component: () => import("../views/Playlist/Playlist.vue"),
-      }
-    ]
+    redirect: "/home",
+    // name: "Home",
+    // component: Home,
+    // children: [
+    //   {
+    //     path: "",
+    //     name: "Main",
+    //     component: () => import("../views/Main/Main.vue"),
+    //   },
+    //   {
+    //     path: "playlist",
+    //     name: "Playlist",
+    //     component: () => import("../views/Playlist/Playlist.vue"),
+    //   }
+    // ]
   },
 
 
