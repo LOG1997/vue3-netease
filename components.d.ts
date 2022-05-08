@@ -5,17 +5,28 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AllPlaylist: typeof import('./src/components/PlayList/AllPlaylist.vue')['default']
     Footer: typeof import('./src/components/Footer/Footer.vue')['default']
+    FourRank: typeof import('./src/components/Rank/FourRank.vue')['default']
     Head: typeof import('./src/components/Head/Head.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    HighPlaylist_container: typeof import('./src/components/PlayList/HighPlaylist_container.vue')['default']
+    HighQualityPlaylist: typeof import('./src/components/PlayList/HighQualityPlaylist/HighQualityPlaylist.vue')['default']
     HomeSwiper: typeof import('./src/components/MainHome/HomeSwiper.vue')['default']
     LeftNav: typeof import('./src/components/LeftNav/LeftNav.vue')['default']
     LoginRegister: typeof import('./src/components/UserLogin/LoginRegister.vue')['default']
     MainHead: typeof import('./src/components/MainHead/MainHead.vue')['default']
+    MusicListInfo: typeof import('./src/components/MusicList/MusicListInfo.vue')['default']
     NewMusic: typeof import('./src/components/MainHome/NewMusic/NewMusic.vue')['default']
+    Playlist_container: typeof import('./src/components/PlayList/Playlist_container.vue')['default']
+    'Playlist_container copy': typeof import('./src/components/PlayList/Playlist_container copy.vue')['default']
+    PlaylistHead: typeof import('./src/components/PlayList/PlaylistHead.vue')['default']
     RecommendPlaylist: typeof import('./src/components/RecommendPlaylist/RecommendPlaylist.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SingerCat: typeof import('./src/components/Singer/SingerCat.vue')['default']
+    SingerList: typeof import('./src/components/Singer/SingerList.vue')['default']
+    TopPlaylist1: typeof import('./src/components/PlayList/TopPlaylist1.vue')['default']
   }
 }
 

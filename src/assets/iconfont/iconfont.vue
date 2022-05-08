@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-03 14:54:28
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-03 15:43:31
+ * @LastEditTime: 2022-05-08 09:14:06
 -->
 
 <template>
@@ -30,7 +30,7 @@ export default defineComponent({
     props: {
         scriptUrl: {//iconfont上的symbol地址
             type: String,
-            default: "https://at.alicdn.com/t/font_3373539_f3a75xlsp6v.js"
+            default: "https://at.alicdn.com/t/font_3373539_u2t38e2ij0s.js"
         },
         class: String,//需要添加的字体图标类
         color: {//图标颜色

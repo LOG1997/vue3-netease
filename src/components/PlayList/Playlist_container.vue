@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-06 17:07:35
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-06 17:31:10
+ * @LastEditTime: 2022-05-07 10:48:28
 -->
 <script setup lang='ts'>
 import { ref,reactive,inject } from 'vue';
@@ -16,13 +16,16 @@ import { ref,reactive,inject } from 'vue';
  
 <template>
     <div class="playlist-container">
-        <ul class="flex gap-25 w-full flex-wrap">
-             <li v-for="item in playlist" :key="item.id">
-                <div class="personalized-item w-40 h-40 rounded-xl m-auto relative">
-                       <div class="playlist-info  w-full absolute text-right text-light-100 pr-2">
+        <ul class="flex gap-20 w-full flex-wrap justify-between">
+             <li v-for="item in playlist" :key="item.id" class="w-60 m-0">
+                <div class="personalized-item w-60 h-60 rounded-xl m-auto relative">
+                       <div class="playlist-info w-20  h-5 absolute text-right text-light-100 text-sm pr-2 ml-40 bg-gray-400/50">
                         <p>◀️{{item.playCount}}</p>
                     </div>
-                    <div class="playlist-img w-40 h-40">
+                              <div class="playlist-info w-20 text-sm  h-5 absolute text-light-100 mt-55 bg-gray-400/50 text-left truncate">
+                        <p>🐼{{item.creator.nickname}}</p>
+                    </div>
+                    <div class="playlist-img w-60 h-60">
                     <img :src="item.coverImgUrl" alt="" class="rounded-xl">
                        
                     </div>
@@ -38,5 +41,7 @@ import { ref,reactive,inject } from 'vue';
 </template>
  
 <style scoped>
- 
+ .playlist-container{
+     /* min-width: 100rem; */
+ }
 </style>

@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-02 21:45:33
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-06 11:45:52
+ * @LastEditTime: 2022-05-08 10:25:10
  */
 import { createRouter, createWebHistory } from "vue-router";
 
@@ -14,7 +14,6 @@ import Home from "../views/Home.vue";
 const routes = [
   
 
-  // home路径重定向到根路径
   {
     
     path: "/home",
@@ -30,26 +29,31 @@ const routes = [
         path: "playlist",
         name: "Playlist",
         component: () => import("../views/Playlist/Playlist.vue"),
+      }, 
+       {
+        path: "hotquility",
+        name: "Hotquility",
+        component: () => import("../views/Playlist/HighQualityPlaylist/HighQualityPlaylist.vue"),
+      },   
+      {
+        path: "rank",
+        name: "Rank",
+        component: () => import("../views/Rank/Rank.vue"),
+      },   {
+        path: "singer",
+        name: "Singer",
+        component: () => import("../views/Singer/Singer.vue"),
+      }, 
+      {
+        path: "musiclist",
+        name: "musiclist",
+        component: () => import("../views/Music/MusicList.vue"),
       }
     ]
   },
   {
     path: "/",
     redirect: "/home",
-    // name: "Home",
-    // component: Home,
-    // children: [
-    //   {
-    //     path: "",
-    //     name: "Main",
-    //     component: () => import("../views/Main/Main.vue"),
-    //   },
-    //   {
-    //     path: "playlist",
-    //     name: "Playlist",
-    //     component: () => import("../views/Playlist/Playlist.vue"),
-    //   }
-    // ]
   },
 
 
