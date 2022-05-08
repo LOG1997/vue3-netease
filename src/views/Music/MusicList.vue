@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-08 10:13:07
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-08 21:18:47
+ * @LastEditTime: 2022-05-08 22:23:30
 -->
 <script setup lang='ts'>
 import { ref, reactive } from 'vue';
@@ -43,7 +43,10 @@ getPlayListDetail({ id: playlistid }).then((res: any) => {
  
 <template>
     <!-- <h2>音乐列表</h2> -->
+    <div class="music-list w-9/10 ml-9">
+
 <MusicListInfo :musicListInfo="musicListInfo"></MusicListInfo>
+    </div>
 </template>
  
 <style scoped>
