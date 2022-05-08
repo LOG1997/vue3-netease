@@ -5,13 +5,14 @@
  * @version: 
  * @Date: 2022-05-08 10:13:07
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-08 22:23:30
+ * @LastEditTime: 2022-05-08 22:33:21
 -->
 <script setup lang='ts'>
 import { ref, reactive } from 'vue';
 import { useRoute } from 'vue-router';
 import { getPlayListDetail } from '@/apis/request';
 import MusicListInfo from '@/components/MusicList/MusicListInfo.vue';
+import MusicLsitDetail from '@/components/MusicList/MusicLsitDetail.vue';
 const route = useRoute();
 const playlistid = route.query.playlistid;
 console.log("路由参数：", playlistid)
@@ -31,12 +32,12 @@ let musicListInfo = ref(
         }
     }
 );
-let musicListDetail = ref([]);
+// let musicListDetail = ref([]);
 getPlayListDetail({ id: playlistid }).then((res: any) => {
     console.log("歌单详情歌曲：", res);
     console.log("歌单详情歌曲：", musicListInfo);
     musicListInfo.value = res.playlist;
-    musicListDetail.value = res.playlist.privileges;
+    // musicListDetailList.value = res.playlist.privileges;
 })
 
 </script>
@@ -46,6 +47,7 @@ getPlayListDetail({ id: playlistid }).then((res: any) => {
     <div class="music-list w-9/10 ml-9">
 
 <MusicListInfo :musicListInfo="musicListInfo"></MusicListInfo>
+<MusicLsitDetail :musicListInfo="musicListInfo.tracks"></MusicLsitDetail>
     </div>
 </template>
  
