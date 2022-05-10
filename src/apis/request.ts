@@ -5,7 +5,7 @@
  * @version:
  * @Date: 2022-05-02 21:45:33
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-09 15:23:53
+ * @LastEditTime: 2022-05-10 16:15:46
  */
 import axios from "./axios";
 let { get, post } = axios;
@@ -48,6 +48,8 @@ export const getPlayListDetail = (data: object) => get(`/api/playlist/detail`, d
 
 // 播放歌曲
 export const getSongUrl = (data: object) => get(`/api/song/url`, data);
+// 歌曲的详细信息
+export const getSongDetail = (data: object) => get(`/api/song/detail`, data);
 
 
 

@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-08 22:24:21
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-10 00:07:05
+ * @LastEditTime: 2022-05-10 17:00:39
 -->
 <script setup lang='ts'>
 import { ref, reactive, computed, onMounted } from 'vue';
@@ -47,12 +47,11 @@ const goclick=(row, column, cell, event)=>{
 let singer=row.ar.map(item=>item.name).join('/')
 let play_queue=props.musicListInfo.map(item=>item.id)
 console.log("singer:",singer);
-    getSongUrl({id:row.id}).then(res=>{
+    getSongUrl({id:row.id}).then((res:any)=>{
         console.log("歌曲地址:",res);
         console.log("store:",store);
         let song={
         id: row.id,
-        play_queue:play_queue,
         name: row.name,
         singer: singer,
         album: row.al.name,
@@ -61,6 +60,7 @@ console.log("singer:",singer);
         cover: row.al.picUrl,
     }
         store.commit("setSong",song);
+        store.commit("setPlayQueue",play_queue);
     })
     }
 }
