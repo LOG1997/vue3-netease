@@ -5,19 +5,19 @@
  * @version: 
  * @Date: 2022-05-03 13:48:51
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-10 17:29:35
+ * @LastEditTime: 2022-05-10 22:43:36
 -->
 <script setup lang='ts'>
-import { ref, reactive, watch,onMounted,computed } from 'vue';
+import { ref, reactive, watch, onMounted, computed } from 'vue';
 import store from "@/store";
 import { getSongUrl, getSongDetail } from '@/apis/request';
 import { SONGDETAIL } from '@/types/type';
 
 
-let songDetail=computed(()=>{
+let songDetail = ref(computed(() => {
     return store.getters.getSongDeatil;
-})
-console.log("songDetail:+++++",songDetail);
+}))
+console.log("songDetail:+++++", songDetail);
 const audio = ref(null);
 
 // 监听vuex歌曲是否变化。变化则自动替换播放地址。
@@ -27,7 +27,7 @@ watch(songDetail, (newValue, oldValue) => {
     setTimeout(() => {
         audio.value.play();
     }, 0)
-},{deep:true})
+}, { deep: true })
 // 获取详细信息存入store,在点击下一首、上一首、自动播放下一首使用
 async function SongDeatil(ids: string | number) {
     let song_id = ids;
@@ -65,19 +65,22 @@ async function SongDeatil(ids: string | number) {
     console.log("songdetail::::", songdetail);
 
 }
-// SongDeatil(445666828);
+
 
 
 // 下一曲
 async function playnext() {
     // console.log("huoquldkakd::::",songDetail)
-    let play_queue=store.getters.getPlayQueue;
+    let play_queue = store.getters.getPlayQueue;
     let current_id = songDetail.value.id;
     let current_index = play_queue.indexOf(current_id);
     let next_index = current_index + 1;
     console.log("播放列表:", play_queue);
     console.log("当前歌曲的index::::", play_queue[current_index]);
     console.log("下一首歌曲的index::::", play_queue[next_index]);
+    if(play_queue[next_index]==null){
+        next_index=0;
+    }
     SongDeatil(play_queue[next_index]);
 }
 // 播放/暂停
@@ -90,25 +93,40 @@ function playpause() {
 }
 // 上一曲
 function playpre() {
-    let play_queue=store.getters.getPlayQueue;
-    let current_id =songDetail.value.id;
+    let play_queue = store.getters.getPlayQueue;
+    let current_id = songDetail.value.id;
     let current_index = play_queue.indexOf(current_id);
     let pre_index = current_index - 1;
+        if(play_queue[pre_index]==null){
+        pre_index=play_queue.length-1;
+    }
     SongDeatil(play_queue[pre_index]);
 }
+
 </script>
  
 <template>
-    <div class="audio-control flex gap-10 w-full justify-center">
-        <button @click="playpre">上一首</button>
-        <button @click="playpause">播放/暂停</button>
-        <button @click="playnext">下一首</button>
+    <div class="playnusic flex">
+        <div class="playnusic-img w-20">
+            <img :src="songDetail.cover" alt="" class="w-20 h-20">
+        </div>
+        <div class="song-info text-left ml-10 w-60">
+            <div class="song-name cursor-pointer">{{ songDetail.name }}</div>
+            <div class="song-singer cursor-pointer">{{ songDetail.singer }}</div>
+        </div>
+        <div class="audio-control flex flex-1 gap-10 justify-center">
+            <button @click="playpre">上一首</button>
+            <button @click="playpause">播放/暂停</button>
+            <button @click="playnext">下一首</button>
+        </div>
+        
     </div>
 
-    <div class="playnusic">
-        <div class="playnusic-img">
-            <!-- <img :src="songDetail.cover" alt=""> -->
-        </div>
+
+
+
+    <div class="audio-container right-0">
+
         <audio controls :src="songDetail.url" ref="audio"></audio>
     </div>
 </template>
