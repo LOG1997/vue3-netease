@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-03 20:26:01
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-08 10:31:54
+ * @LastEditTime: 2022-05-09 10:35:11
 -->
 <script setup lang='ts'>
 import { ref, reactive, computed } from 'vue';
@@ -22,14 +22,14 @@ function routerToMusicList(data: any) {
     console.log("跳转到歌单详情", data);
     router.push(
         {
-            path: "musiclist",
+            path: "/home/musiclist",
             query: {
                 playlistid: data
             }
         }
     )
 }
-console.log("个人歌单：", personalized)
+// console.log("个人歌单：", personalized)
 </script>
  
 <template>

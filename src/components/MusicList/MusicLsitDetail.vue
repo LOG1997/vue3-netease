@@ -5,11 +5,13 @@
  * @version: 
  * @Date: 2022-05-08 22:24:21
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-08 23:54:06
+ * @LastEditTime: 2022-05-10 00:07:05
 -->
 <script setup lang='ts'>
 import { ref, reactive, computed, onMounted } from 'vue';
 import { ElTable } from 'element-plus';
+import {getSongUrl} from '@/apis/request';
+import store from '@/store';
 let props = defineProps({
     musicListInfo: Object
 })
@@ -21,13 +23,54 @@ const musicListInfo = computed(() => {
     return props.musicListInfo;
 })
 let dt = ref(null);
+
+const changeColumnStyle=({row,column,rowIndex,columnIndex})=>{
+    if(columnIndex===2){
+        return {
+            cursor:"pointer"
+        }
+    }
+}
+const changeRowStyle=({row,rowIndex})=>{
+    if(rowIndex<3){
+        return {
+            backgroundImage: 'linear-gradient(to right, #a18cd188 0%, #fbc2eb77 100%)'
+        }
+    }
+}
+const goclick=(row, column, cell, event)=>{
+    // console.log("click:",row, column, cell, event);
+    
+    if(column.label==="歌名"){
+        console.log("clickRow:",row);
+  
+let singer=row.ar.map(item=>item.name).join('/')
+let play_queue=props.musicListInfo.map(item=>item.id)
+console.log("singer:",singer);
+    getSongUrl({id:row.id}).then(res=>{
+        console.log("歌曲地址:",res);
+        console.log("store:",store);
+        let song={
+        id: row.id,
+        play_queue:play_queue,
+        name: row.name,
+        singer: singer,
+        album: row.al.name,
+        url: res.data[0].url,
+        dt:row.dt,
+        cover: row.al.picUrl,
+    }
+        store.commit("setSong",song);
+    })
+    }
+}
 console.log("dt:", dt);
 
-</script>
+</script>   
  
 <template>
     <div class="music-list-item">
-        <el-table :data="musicListInfo" stripe="" style="width: 100%" >
+        <el-table :data="musicListInfo"  style="width: 100%" :cell-style="changeColumnStyle" :row-style="changeRowStyle" @cell-click="goclick">
             <el-table-column type="index" label="" width="60" />
             <el-table-column label="操作" width="100">
                 <div class="option-music flex cursor-pointer">
@@ -38,7 +81,7 @@ console.log("dt:", dt);
             <el-table-column prop="name" label="歌名" width="300" :show-overflow-tooltip="true"/>
             <el-table-column prop="ar" label="歌手" width="300" :show-overflow-tooltip="true">
                 <template #default="scope">
-                    <span v-for="item in scope.row.ar" :key="item.id">{{ item.name }}</span>
+                    <span >{{ scope.row.ar.map(item=>item.name).join(' / ') }}</span>
                 </template>
             </el-table-column>
 

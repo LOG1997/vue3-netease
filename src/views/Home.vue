@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-02 21:45:33
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-06 14:03:01
+ * @LastEditTime: 2022-05-09 16:40:24
 -->
 <script  setup lang='ts'>
 import { ref, reactive } from 'vue'
@@ -43,8 +43,8 @@ import MainHead from "../components/MainHead/MainHead.vue";
             <!-- <Main ></Main> -->
         </main>
     </main>
-    <footer class="h-20 bg-dark-200 z-30 mt-22">
-        <!-- <Footer></Footer> -->
+    <footer class="h-20 z-30 mt-22">
+        <Footer class="bg-red-200"></Footer>
     </footer>
 </template>
  

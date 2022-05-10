@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-07 22:32:35
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-08 09:59:51
+ * @LastEditTime: 2022-05-09 10:06:50
 -->
 <script setup lang='ts'>
 import { ref, reactive,onMounted } from 'vue';
@@ -21,17 +21,17 @@ let singerList=ref([]);
 onMounted(() => {
     getArtistList(sendArg.value).then((res: any) => {
     singerList.value = res.artists;
-    console.log("歌手列表", singerList);
+    // console.log("歌手列表", singerList);
 })
 })
 
 function changeArg(data: any) {
-    console.log("原有参数", sendArg)
+    // console.log("原有参数", sendArg)
     sendArg = data;
-    console.log("更新参数", sendArg);
+    // console.log("更新参数", sendArg);
     getArtistList(sendArg).then((res: any) => {
     singerList.value = res.artists;
-    console.log("更新歌手列表", singerList)
+    // console.log("更新歌手列表", singerList)
 })
 }
 

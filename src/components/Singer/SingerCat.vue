@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-07 23:32:02
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-08 09:59:08
+ * @LastEditTime: 2022-05-09 10:09:08
 -->
 <script setup lang='ts'>
 import { ref, reactive, watch } from 'vue';
@@ -78,8 +78,8 @@ function changeArg(arg: any) {
 }
 
 watch(props.sendArg, (newName, oldName) => {
-    console.log("子newName", newName);
-    console.log("子oldName", oldName);
+    // console.log("子newName", newName);
+    // console.log("子oldName", oldName);
     changeArg(props.sendArg)
 }, { deep: true });
 

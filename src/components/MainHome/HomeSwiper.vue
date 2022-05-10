@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-03 17:13:37
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-04 22:28:57
+ * @LastEditTime: 2022-05-09 10:08:02
 -->
 <template>
   <div class="swiper-container w-100%">
@@ -60,6 +60,6 @@ const onSwiper = (swiper: any) => {
 const onSlideChange = () => {
   console.log('slide change');
 };
-console.log("bannseee:", ban)
+// console.log("bannseee:", ban)
 </script>
 

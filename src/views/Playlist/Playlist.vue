@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-05 23:26:00
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-08 09:36:38
+ * @LastEditTime: 2022-05-09 10:07:15
 -->
 <script setup lang='ts'>
 import { ref, reactive, provide } from 'vue';
@@ -24,14 +24,14 @@ let playlist = ref([])
 let alltags = ref([])
 // 获取精品歌单封面
 getTopPlayList({ limit: 1 }).then((res: any) => {
-    console.log("精品歌单封面", res.playlists[0]);
+    // console.log("精品歌单封面", res.playlists[0]);
     topPlayList1.value = res.playlists[0];
 })
 
 // 获取热门标签
 getPlayListHot().then((res: any) => {
     hottags.value = res.tags;
-    console.log("热门歌单分类", hottags);
+    // console.log("热门歌单分类", hottags);
 })
 //  获取全部歌单标签
 const getAlltags = () => {
@@ -44,7 +44,7 @@ const getAlltags = () => {
 
 //  获得指定分类歌单
 getPlayList({ limit: 40 }).then((res: any) => {
-    console.log("全部？", res);
+    // console.log("全部？", res);
     playlist.value = res.playlists;
 })
 
@@ -52,7 +52,7 @@ getPlayList({ limit: 40 }).then((res: any) => {
 function transferCatTags(cat: string) {
     console.log("获得孙组件传上来的歌单分类:", cat);
     getPlayList({ cat: cat, limit: 40 }).then((res: any) => {
-        console.log("全部？", res);
+        // console.log("全部？", res);
         playlist.value = res.playlists;
     })
 }

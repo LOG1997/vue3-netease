@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-08 10:13:07
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-08 22:33:21
+ * @LastEditTime: 2022-05-09 10:07:25
 -->
 <script setup lang='ts'>
 import { ref, reactive } from 'vue';
@@ -34,8 +34,8 @@ let musicListInfo = ref(
 );
 // let musicListDetail = ref([]);
 getPlayListDetail({ id: playlistid }).then((res: any) => {
-    console.log("歌单详情歌曲：", res);
-    console.log("歌单详情歌曲：", musicListInfo);
+    // console.log("歌单详情歌曲：", res);
+    // console.log("歌单详情歌曲：", musicListInfo);
     musicListInfo.value = res.playlist;
     // musicListDetailList.value = res.playlist.privileges;
 })

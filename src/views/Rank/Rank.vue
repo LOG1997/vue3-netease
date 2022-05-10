@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-07 15:22:53
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-08 10:36:04
+ * @LastEditTime: 2022-05-09 10:06:56
 -->
 <script setup lang='ts'>
 import { ref,reactive ,onMounted} from 'vue';
@@ -20,7 +20,7 @@ import FourRank from '@/components/Rank/FourRank.vue';
 //     });
     getRankListSymple().then((res:any)=>{
         rankFour.value = res.list.slice(0,4);
-        console.log("榜单简略信息：",rankFour.value);
+        // console.log("榜单简略信息：",rankFour.value);
     });
 
 

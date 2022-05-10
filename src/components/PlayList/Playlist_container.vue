@@ -1,23 +1,36 @@
 <!--
  * @Author: LOG
- * @FilePath: \vue3-netease\src\views\Playlist\Playlist_container.vue
+ * @FilePath: \vue3-netease\src\components\PlayList\Playlist_container.vue
  * @Descripttion: 
  * @version: 
  * @Date: 2022-05-06 17:07:35
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-07 10:48:28
+ * @LastEditTime: 2022-05-09 10:43:00
 -->
 <script setup lang='ts'>
 import { ref,reactive,inject } from 'vue';
+import { useRouter } from 'vue-router';
  const playlist=inject("playlist")
  
- 
+const router = useRouter();
+ function routerToMusicList(data: any) {
+    console.log("跳转到歌单详情", data);
+    router.push(
+        {
+            path: "/home/musiclist",
+            query: {
+                playlistid: data
+            }
+        }
+    )
+}
 </script>
  
 <template>
+<!-- <h2>lllll</h2> -->
     <div class="playlist-container">
         <ul class="flex gap-20 w-full flex-wrap justify-between">
-             <li v-for="item in playlist" :key="item.id" class="w-60 m-0">
+             <li v-for="item in playlist" :key="item.id" class="w-60 m-0" @click="routerToMusicList(item.id)">
                 <div class="personalized-item w-60 h-60 rounded-xl m-auto relative">
                        <div class="playlist-info w-20  h-5 absolute text-right text-light-100 text-sm pr-2 ml-40 bg-gray-400/50">
                         <p>◀️{{item.playCount}}</p>
@@ -41,7 +54,5 @@ import { ref,reactive,inject } from 'vue';
 </template>
  
 <style scoped>
- .playlist-container{
-     /* min-width: 100rem; */
- }
+
 </style>

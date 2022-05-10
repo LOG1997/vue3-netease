@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-02 21:45:33
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-03 14:57:36
+ * @LastEditTime: 2022-05-09 15:39:12
  */
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -17,6 +17,7 @@ import IconFont from '@/assets/iconfont/iconfont.vue'
 // element-plus
 import 'element-plus/dist/index.css'
 import router from "./router/index";
+import store from "./store/index";
 const app=createApp(App);
 app.component('icon-font',IconFont);
-app.use(router).mount('#app')
+app.use(router).use(store).mount('#app')

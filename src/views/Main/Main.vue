@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-03 20:22:03
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-05 22:51:03
+ * @LastEditTime: 2022-05-09 10:09:21
 -->
 <script setup lang='ts'>
 import { ref, reactive, onMounted } from 'vue';
@@ -19,17 +19,17 @@ let newSong = ref([])
 onMounted(() => {
     //  获取轮播图
     getBanner().then((res: any) => {
-        console.log("获取到的信息", res);
+        // console.log("获取到的信息", res);
         banners.value = res;
     })
     //  每日推荐歌单
     getPersonalized().then((res: any) => {
-        console.log("推荐歌单", res);
+        // console.log("推荐歌单", res);
         personalized.value = res.recommend;
     })
     //  最新音乐
     getNewSong({ limit: 12 }).then((res: any) => {
-        console.log("最新音乐", res);
+        // console.log("最新音乐", res);
         newSong.value = res.result;
     })
 })
