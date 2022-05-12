@@ -6,6 +6,7 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AllPlaylist: typeof import('./src/components/PlayList/AllPlaylist.vue')['default']
+    ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     Footer: typeof import('./src/components/Footer/Footer.vue')['default']
     FourRank: typeof import('./src/components/Rank/FourRank.vue')['default']
     Head: typeof import('./src/components/Head/Head.vue')['default']

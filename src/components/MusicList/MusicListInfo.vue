@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-08 10:44:09
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-08 22:23:54
+ * @LastEditTime: 2022-05-12 23:36:56
 -->
 <script setup lang='ts'>
 import { ref, reactive, computed } from 'vue';
@@ -32,7 +32,7 @@ const musicListInfo = computed(() => {
         </div>
         <div class="music-list-info-info text-left ml-10 w-2/3">
             <div class="text-2xl">{{ musicListInfo.name }}</div>
-            <div>{{ musicListInfo.creator.nickname }}</div>
+            <div v-if="musicListInfo.creator">{{ musicListInfo.creator.nickname }}</div>
             <div><span>tags:</span><span v-for="item in musicListInfo.tags" class="mr-2"><a href="">{{ item
             }}</a></span>
             </div>

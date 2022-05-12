@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-03 20:26:01
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-09 10:35:11
+ * @LastEditTime: 2022-05-12 23:48:30
 -->
 <script setup lang='ts'>
 import { ref, reactive, computed } from 'vue';
@@ -29,13 +29,21 @@ function routerToMusicList(data: any) {
         }
     )
 }
+function toRecommendMusic(){
+     router.push(
+        {
+            path: "/home/recom",
+       
+        }
+    )
+}
 // console.log("个人歌单：", personalized)
 </script>
  
 <template>
     <div class="recommend-list h-50">
         <ul class="grid grid-cols-5 grid-rows-[15rem,15rem] row-span-1 justify-center">
-            <li>
+            <li @click="toRecommendMusic">
                 <div class="daily-playlist w-40 h-40 m-auto ">
                     <div class="daily-playlist h-40 w-40 bg-dark-50 rounded-xl">
                         <span class="text-light-50 text-9xl leading-40">{{ new Date().getDate() }}</span>

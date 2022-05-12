@@ -1,16 +1,16 @@
 <!--
  * @Author: LOG
- * @FilePath: \vue3-netease\src\views\Music\MusicList.vue
+ * @FilePath: \vue3-netease\src\views\EveryDayRecommenMusic\EveryDayRecommenMusic.vue
  * @Descripttion: 
  * @version: 
- * @Date: 2022-05-08 10:13:07
+ * @Date: 2022-05-12 23:30:14
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-12 23:48:10
+ * @LastEditTime: 2022-05-12 23:44:03
 -->
 <script setup lang='ts'>
 import { ref, reactive } from 'vue';
 import { useRoute } from 'vue-router';
-import { getPlayListDetail } from '@/apis/request';
+import { getPlayListDetail,getRecommendMusic } from '@/apis/request';
 import MusicListInfo from '@/components/MusicList/MusicListInfo.vue';
 import MusicLsitDetail from '@/components/MusicList/MusicLsitDetail.vue';
 const route = useRoute();
@@ -33,10 +33,10 @@ let musicListInfo = ref(
     }
 );
 // let musicListDetail = ref([]);
-getPlayListDetail({ id: playlistid }).then((res: any) => {
-    // console.log("歌单详情歌曲：", res);
+getRecommendMusic({}).then((res: any) => {
     // console.log("歌单详情歌曲：", musicListInfo);
-    musicListInfo.value = res.playlist;
+    musicListInfo.value = res.data.dailySongs;
+    console.log("推荐歌曲", musicListInfo);
     // musicListDetailList.value = res.playlist.privileges;
 })
 
@@ -46,8 +46,7 @@ getPlayListDetail({ id: playlistid }).then((res: any) => {
     <!-- <h2>音乐列表</h2> -->
     <div class="music-list w-9/10 ml-9">
 
-<MusicListInfo :musicListInfo="musicListInfo"></MusicListInfo>
-<MusicLsitDetail :musicListInfo="musicListInfo.tracks"></MusicLsitDetail>
+<MusicLsitDetail :musicListInfo="musicListInfo"></MusicLsitDetail>
     </div>
 </template>
  

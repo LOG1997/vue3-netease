@@ -5,11 +5,12 @@
  * @version: 
  * @Date: 2022-05-02 21:45:33
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-08 10:25:10
+ * @LastEditTime: 2022-05-12 23:46:36
  */
 import { createRouter, createWebHistory } from "vue-router";
 
 import Home from "../views/Home.vue";
+import EveryDayRecommenMusic from "../views/EveryDayRecommenMusic/EveryDayRecommenMusic.vue";
 // import Main from "../views/Main/Main.vue";
 const routes = [
   
@@ -48,6 +49,11 @@ const routes = [
         path: "musiclist",
         name: "musiclist",
         component: () => import("../views/Music/MusicList.vue"),
+      },
+      {
+        path: "recom",
+        name: "EveryDayRecommenMusic",
+        component: EveryDayRecommenMusic ,
       }
     ]
   },
