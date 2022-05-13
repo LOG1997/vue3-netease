@@ -5,7 +5,7 @@
  * @version:
  * @Date: 2022-05-02 21:45:33
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-12 23:35:46
+ * @LastEditTime: 2022-05-14 00:09:34
  */
 import axios from "./axios";
 let { get, post } = axios;
@@ -54,4 +54,11 @@ export const getSongDetail = (data: object) => get(`/api/song/detail`, data);
 export const getRecommendMusic = (data: object) => get(`/api/recommend/songs`, data);
 
 
-
+// 获取歌手详情
+export const getArtistDetail = (data: object) => get(`/api/artist/detail`, data);
+// 获取歌手热门50首歌曲
+export const getArtistHotSongs = (data: object) => get(`/api/artist/top/song`, data);
+// 获取歌手专辑
+export const getArtistAlbum = (data: object) => get(`/api/artist/album`, data);
+// 获取专辑里的歌曲
+export const getAlbum = (data: object) => get(`/api/album`, data);

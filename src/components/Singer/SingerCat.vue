@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-07 23:32:02
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-09 10:09:08
+ * @LastEditTime: 2022-05-13 22:16:08
 -->
 <script setup lang='ts'>
 import { ref, reactive, watch } from 'vue';
@@ -47,7 +47,7 @@ const type = [
     },
 ]
 const initial = ["热门", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "#"]
-console.log("字母", JSON.stringify(initial))
+
 // 请求歌单信息
 // let sendArg = ref({ type: "-1", area: "96", initial: "-1" });
 const props = defineProps({
@@ -63,7 +63,6 @@ function sendType(str: string) {
     props.sendArg.type = str
 }
 function sendInitial(str: string) {
-    console.log("字母：：", str)
     if (str == "#") {
         str = "0"
     } if (str == "热门") {

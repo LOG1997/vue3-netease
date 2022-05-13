@@ -42,11 +42,10 @@ export default defineConfig({
               rewrite: (path) => path.replace(/^\/api/, '')
             },
       },
-      origin: 'http://127.0.0.1:8080/'
+      // origin: 'http://127.0.0.1:8080/'
   },
   resolve: {
     alias: {
-      
       "@": resolve(__dirname, "./src"),
     },
   },

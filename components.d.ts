@@ -6,6 +6,7 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AllPlaylist: typeof import('./src/components/PlayList/AllPlaylist.vue')['default']
+    ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     Footer: typeof import('./src/components/Footer/Footer.vue')['default']
     FourRank: typeof import('./src/components/Rank/FourRank.vue')['default']
@@ -24,8 +25,12 @@ declare module '@vue/runtime-core' {
     RecommendPlaylist: typeof import('./src/components/RecommendPlaylist/RecommendPlaylist.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SingerAvatar: typeof import('./src/components/Singer/SingerAvatar.vue')['default']
     SingerCat: typeof import('./src/components/Singer/SingerCat.vue')['default']
+    SingerHotSongs: typeof import('./src/components/Singer/SingerHotSongs.vue')['default']
     SingerList: typeof import('./src/components/Singer/SingerList.vue')['default']
+    SingerSongs: typeof import('./src/components/Singer/SingerSongs.vue')['default']
+    SingerSongsItem: typeof import('./src/components/Singer/SingerSongsItem.vue')['default']
     TopPlaylist1: typeof import('./src/components/PlayList/TopPlaylist1.vue')['default']
   }
 }

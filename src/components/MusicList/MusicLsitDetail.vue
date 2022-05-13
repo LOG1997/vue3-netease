@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-08 22:24:21
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-13 00:14:22
+ * @LastEditTime: 2022-05-14 00:58:35
 -->
 <script setup lang='ts'>
 import { ref, reactive, computed, onMounted } from 'vue';
@@ -16,11 +16,12 @@ let props = defineProps({
     musicListInfo: Object
 })
 // 计算属性获取传递归来的歌单
-const musicListInfo = computed(() => {
-    console.log("推荐歌单里的歌曲:", props.musicListInfo);
+let len=ref(0);
+let musicitem = computed(() => {
+    // console.log("推荐歌单里的歌曲computed11111:", props);
     return props.musicListInfo;
 })
-let dt = ref(null);
+// console.log("musicListInfo:+++++", musicListInfo.value);
 // 改变表格列样式
 const changeColumnStyle=({row,column,rowIndex,columnIndex})=>{
     if(columnIndex===2){
@@ -42,13 +43,13 @@ const goclick=(row:any, column:any, cell:any, event:any)=>{
     // console.log("click:",row, column, cell, event);
     
     if(column.label==="歌名"){
-        console.log("clickRow:",row);
+        // console.log("clickRow:",row);
 let singer=row.ar.map((item:any)=>item.name).join('/')
 let play_queue=props.musicListInfo?.map((item:any)=>item.id)
 console.log("singer:",singer);
     getSongUrl({id:row.id}).then((res:any)=>{
-        console.log("歌曲地址:",res);
-        console.log("store:",store);
+        // console.log("歌曲地址:",res);
+        // console.log("store:",store);
         let song={
         id: row.id,
         name: row.name,
@@ -63,13 +64,13 @@ console.log("singer:",singer);
     })
     }
 }
-console.log("dt:", dt);
+// console.log("dt:", dt);
 
 </script>   
  
 <template>
-    <div class="music-list-item" v-if="musicListInfo[0]">
-        <el-table :data="musicListInfo"  style="width: 100%" :cell-style="changeColumnStyle" :row-style="changeRowStyle" @cell-click="goclick">
+    <div class="music-list-item">
+        <el-table :data="musicitem"  style="width: 100%" :cell-style="changeColumnStyle" :row-style="changeRowStyle" @cell-click="goclick">
             <el-table-column type="index" label="" width="60" />
             <el-table-column label="操作" width="100">
                 <div class="option-music flex cursor-pointer">

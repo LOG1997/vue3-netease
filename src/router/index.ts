@@ -54,6 +54,11 @@ const routes = [
         path: "recom",
         name: "EveryDayRecommenMusic",
         component: EveryDayRecommenMusic ,
+      },
+      {
+        path:'singerDetail',
+        name:'SingerDetail',
+        component: () => import('../views/Singer/SingerDetail.vue')
       }
     ]
   },

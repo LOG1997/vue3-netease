@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-03 20:26:01
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-12 23:48:30
+ * @LastEditTime: 2022-05-13 20:56:08
 -->
 <script setup lang='ts'>
 import { ref, reactive, computed } from 'vue';
@@ -55,7 +55,7 @@ function toRecommendMusic(){
             </li>
             <li v-for="item in personalized" :key="item.id" @click="routerToMusicList(item.id)">
                 <div class="personalized-item w-40 h-40 rounded-xl m-auto">
-                    <img :src="item.picUrl" alt="" class="rounded-xl">
+                    <img :src="item.picUrl" alt="" class="rounded-xl h-40 w-40 object-cover">
                     <div class="personalized-item-info">
                         <p>{{ item.name }}</p>
 

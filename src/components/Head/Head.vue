@@ -5,7 +5,7 @@
  * @version: 
  * @Date: 2022-05-03 13:48:37
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-04 19:31:59
+ * @LastEditTime: 2022-05-14 00:37:59
 -->
 <script setup lang='ts'>
 import { ref, reactive } from 'vue';
@@ -13,7 +13,7 @@ import { ref, reactive } from 'vue';
 import wyyLogoVue from '@/assets/iconfont/wyy-logo.vue';
 import UserLogin from '@/components/UserLogin/LoginRegister.vue';
 import { loginCellphone } from '../../apis/request';
-
+import store from "@/store";
 import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()
@@ -47,13 +47,15 @@ let userInfo = ref(JSON.parse(localStorage.getItem("userInfo"))) || null;
 function toHome() {
 
     router.push({
-        name: 'Home'
+        path: '/home'
     })
 }
 // 取消登录
 function cancelLogin() {
     isLoginView.value = false;
 }
+
+// 设置用户信息
 </script>
  
 <template>

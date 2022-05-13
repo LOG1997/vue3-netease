@@ -5,14 +5,12 @@
  * @version: 
  * @Date: 2022-05-02 21:45:33
  * @LastEditors: LOG
- * @LastEditTime: 2022-05-09 15:39:12
+ * @LastEditTime: 2022-05-13 00:30:26
  */
 import { createApp } from 'vue'
 import App from './App.vue'
 import 'virtual:windi.css'
 import "./assets/css/reset.css"
-// iconfont
-import "@/assets/iconfont/iconfont.css";
 import IconFont from '@/assets/iconfont/iconfont.vue'
 // element-plus
 import 'element-plus/dist/index.css'
